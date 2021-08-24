@@ -34,7 +34,7 @@ const healthyMeals = {
       thumbnail: "/vegan.jpg",
     },
     {
-      name: "Vegeratian",
+      name: "Vegetarian",
       thumbnail: "/vegetarian.jpg",
     },
     {
