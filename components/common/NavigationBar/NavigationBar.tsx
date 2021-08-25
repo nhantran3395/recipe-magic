@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import NextLink from "next/link";
+import { useRouter } from "next/router";
 import { Pane, Tablist, Tab, Link } from "evergreen-ui";
 import routes from "../../../routes";
 import { IRoute } from "../../../routes/interfaces";
 
 const NavigationBar = () => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const router = useRouter();
+  const currentRouteIdx = routes.findIndex(
+    (route) => route.path === router.pathname
+  );
+
+  const [selectedIndex, setSelectedIndex] = useState<number>(currentRouteIdx);
   const [tabs] = React.useState<IRoute[]>(routes);
 
   return (
