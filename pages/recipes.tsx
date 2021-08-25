@@ -1,56 +1,24 @@
+import React, { useState, MouseEvent } from "react";
 import type { NextPage } from "next";
 import Head from "../components/common/Head";
-import { Pane, Heading } from "evergreen-ui";
+import { Pane, Heading, SearchInput, Button, majorScale } from "evergreen-ui";
 import Layout from "../components/common/Layout";
 import Category from "../components/category/Category";
-
-const mealOfTheDay = {
-  title: "Meal of the day",
-  options: [
-    {
-      name: "Breakfast",
-      thumbnail: "/breakfast.jpg",
-    },
-    {
-      name: "Lunch",
-      thumbnail: "/lunch.jpg",
-    },
-    {
-      name: "Dinner",
-      thumbnail: "/dinner.jpg",
-    },
-    {
-      name: "Desserts",
-      thumbnail: "/desserts.jpg",
-    },
-  ],
-};
-
-const healthyMeals = {
-  title: "Healthy meals",
-  options: [
-    {
-      name: "Vegan",
-      thumbnail: "/vegan.jpg",
-    },
-    {
-      name: "Vegetarian",
-      thumbnail: "/vegetarian.jpg",
-    },
-    {
-      name: "Low Sugar",
-      thumbnail: "/low-sugar.jpg",
-    },
-    {
-      name: "Nut Free",
-      thumbnail: "/nut-free.jpg",
-    },
-  ],
-};
-
-const categories = [mealOfTheDay, healthyMeals];
+import categories from "../features/category/data";
 
 const Recipes: NextPage = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
+  const handleChangeSearchTerm = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    alert(searchTerm);
+  };
+
   return (
     <Layout>
       <Head
@@ -64,7 +32,29 @@ const Recipes: NextPage = () => {
         justifyContent="center"
         flexDirection="column"
       >
-        <Heading size={900}>Search through 1.7+ million recipes</Heading>
+        <Pane
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          flexDirection="column"
+        >
+          <Heading size={900}>Search through 1.7+ million recipes</Heading>
+
+          <Pane
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="row"
+            margin={majorScale(3)}
+          >
+            <SearchInput
+              marginRight={majorScale(3)}
+              onChange={handleChangeSearchTerm}
+              value={searchTerm}
+            />
+            <Button onClick={handleSearchButtonClick}>Get Recipes</Button>
+          </Pane>
+        </Pane>
 
         {categories.map((category) => (
           <Category {...category} key={category.title} />
