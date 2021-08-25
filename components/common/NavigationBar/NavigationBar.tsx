@@ -17,17 +17,16 @@ const NavigationBar = () => {
     <Pane>
       <Tablist>
         {tabs.map((tab, index) => (
-          <Tab
-            key={tab.name}
-            id={tab.name}
-            onSelect={() => setSelectedIndex(index)}
-            isSelected={index === selectedIndex}
-            aria-controls={`panel-${tab.name}`}
-          >
-            <NextLink href={tab.path}>
+          <NextLink href={tab.path} key={tab.name}>
+            <Tab
+              id={tab.name}
+              onSelect={() => setSelectedIndex(index)}
+              isSelected={index === selectedIndex}
+              aria-controls={`panel-${tab.name}`}
+            >
               <Link>{tab.name}</Link>
-            </NextLink>
-          </Tab>
+            </Tab>
+          </NextLink>
         ))}
       </Tablist>
     </Pane>
