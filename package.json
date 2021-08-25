@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
-    "axios": "^0.21.1",
     "evergreen-ui": "^6.4.0",
     "next": "11.1.0",
     "react": "17.0.2",

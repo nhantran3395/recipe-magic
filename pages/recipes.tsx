@@ -5,9 +5,13 @@ import { Pane, Heading, SearchInput, Button, majorScale } from "evergreen-ui";
 import Layout from "../components/common/Layout";
 import Category from "../components/category/Category";
 import categories from "../features/category/data";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { searchRecipes, selectRecipes } from "../features/recipes/recipesSlice";
 
 const Recipes: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const dispatch = useAppDispatch();
+  const { recipes, pending, error } = useAppSelector(selectRecipes);
 
   const handleChangeSearchTerm = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -16,7 +20,8 @@ const Recipes: NextPage = () => {
   };
 
   const handleSearchButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
-    alert(searchTerm);
+    dispatch(searchRecipes(searchTerm));
+    console.log(recipes);
   };
 
   return (
