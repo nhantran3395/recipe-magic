@@ -1,5 +1,5 @@
-const mealOfTheDay = {
-  title: "Meal of the day",
+const mealsOfTheDay = {
+  title: "Meals of the day",
   options: [
     {
       name: "Breakfast",
@@ -42,6 +42,6 @@ const healthyMeals = {
   ],
 };
 
-const categories = [mealOfTheDay, healthyMeals];
+const categories = [mealsOfTheDay, healthyMeals];
 
 export default categories;

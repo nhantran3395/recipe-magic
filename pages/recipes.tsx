@@ -5,7 +5,7 @@ import { Pane, Heading } from "evergreen-ui";
 import Layout from "../components/common/Layout";
 import SearchBar from "../components/common/SearchBar";
 import CategoryList from "../components/category/CategoryList";
-import categories from "../features/category/data";
+import categories from "../features/categories/data";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { searchRecipes, selectRecipes } from "../features/recipes/recipesSlice";
 
