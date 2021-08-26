@@ -22,7 +22,7 @@ const buildRecipeSearchUrl = (searchTerm: string) => {
 export const searchRecipes = createAsyncThunk('recipes/searchByTerm', async (searchTerm: string) => {
   const response = await fetch(buildRecipeSearchUrl(searchTerm));
   const data = await response.json();
-  const recipes = data.hits?.map(hit => hit.recipe);
+  const recipes = data.hits.map((hit: any) => hit.recipe);
 
   return recipes;
 });
