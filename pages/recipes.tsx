@@ -32,7 +32,7 @@ const Recipes: NextPage = () => {
   };
 
   const isToShowRecipeList = () => {
-    return !isRecipesEmpty();
+    return !isRecipesEmpty() && !isPending;
   };
 
   return (
