@@ -25,45 +25,47 @@ const Recipes: NextPage = () => {
   };
 
   return (
-    <Layout>
+    <>
       <Head
         pageName="Recipes"
         description="uses the awesome Edamam API for recipes and nutrition data."
       />
 
-      <Pane
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        flexDirection="column"
-      >
+      <Layout>
         <Pane
           display="flex"
           alignItems="center"
           justifyContent="center"
           flexDirection="column"
         >
-          <Heading size={900}>Search through 1.7+ million recipes</Heading>
-
           <Pane
             display="flex"
             alignItems="center"
             justifyContent="center"
-            flexDirection="row"
-            margin={majorScale(3)}
+            flexDirection="column"
           >
-            <SearchInput
-              marginRight={majorScale(3)}
-              onChange={handleChangeSearchTerm}
-              value={searchTerm}
-            />
-            <Button onClick={handleSearchButtonClick}>Get Recipes</Button>
-          </Pane>
-        </Pane>
+            <Heading size={900}>Search through 1.7+ million recipes</Heading>
 
-        <CategoryList categories={categories} />
-      </Pane>
-    </Layout>
+            <Pane
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              flexDirection="row"
+              margin={majorScale(3)}
+            >
+              <SearchInput
+                marginRight={majorScale(3)}
+                onChange={handleChangeSearchTerm}
+                value={searchTerm}
+              />
+              <Button onClick={handleSearchButtonClick}>Get Recipes</Button>
+            </Pane>
+          </Pane>
+
+          <CategoryList categories={categories} />
+        </Pane>
+      </Layout>
+    </>
   );
 };
 
