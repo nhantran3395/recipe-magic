@@ -16,7 +16,7 @@ const Layout = ({ children }: ILayoutProps) => {
     >
       <Header />
       <Pane
-        width="100%"
+        width="80%"
         height="100%"
         display="flex"
         alignItems="center"

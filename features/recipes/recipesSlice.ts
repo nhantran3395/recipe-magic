@@ -7,8 +7,8 @@ import { IRecipesState } from './interfaces';
 
 const initialState: IRecipesState = {
   recipes: [],
-  pending: false,
-  error: false,
+  isPending: false,
+  isError: false,
 };
 
 const EDAMAM_BASE_URL = 'https://api.edamam.com/api/recipes/v2';
@@ -22,7 +22,7 @@ const buildRecipeSearchUrl = (searchTerm: string) => {
 export const searchRecipes = createAsyncThunk('recipes/searchByTerm', async (searchTerm: string) => {
   const response = await fetch(buildRecipeSearchUrl(searchTerm));
   const data = await response.json();
-  const recipes = data.hits;
+  const recipes = data.hits?.map(hit => hit.recipe);
 
   return recipes;
 });
@@ -35,15 +35,15 @@ export const recipesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(searchRecipes.pending, state => {
-        state.pending = true;
+        state.isPending = true;
       })
       .addCase(searchRecipes.fulfilled, (state, { payload }) => {
-        state.pending = false;
+        state.isPending = false;
         state.recipes = payload;
       })
       .addCase(searchRecipes.rejected, state => {
-        state.pending = false;
-        state.error = true;
+        state.isPending = false;
+        state.isError = true;
       });
   },
 });

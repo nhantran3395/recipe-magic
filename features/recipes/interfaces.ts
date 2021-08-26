@@ -1,12 +1,7 @@
+import { IRecipe } from "../../models/recipes";
+
 export interface IRecipesState {
   recipes: IRecipe[];
-  pending: boolean;
-  error: boolean;
+  isPending: boolean;
+  isError: boolean;
 };
-
-interface IRecipe {
-  label: string,
-  image: string,
-  source: string,
-  sourceUrl: string
-}
