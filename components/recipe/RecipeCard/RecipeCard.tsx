@@ -12,7 +12,7 @@ const RecipeCard = ({ label, image, source, sourceUrl }: IRecipeCardProps) => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
-      flex="1 1 30%"
+      flex="1 1 20%"
     >
       <Image src={image} width={300} height={300}></Image>
       <Heading size={600}>{label}</Heading>
