@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import Head from "../components/common/Head";
 import { Pane, Heading, SearchInput, Button, majorScale } from "evergreen-ui";
 import Layout from "../components/common/Layout";
-import Category from "../components/category/Category";
+import CategoryList from "../components/category/CategoryList";
 import categories from "../features/category/data";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { searchRecipes, selectRecipes } from "../features/recipes/recipesSlice";
@@ -61,9 +61,7 @@ const Recipes: NextPage = () => {
           </Pane>
         </Pane>
 
-        {categories.map((category) => (
-          <Category {...category} key={category.title} />
-        ))}
+        <CategoryList categories={categories} />
       </Pane>
     </Layout>
   );
