@@ -14,7 +14,7 @@ const RecipeList = ({ recipes }: IRecipeListProps) => {
       margin={majorScale(2)}
     >
       {recipes.map((recipe) => (
-        <RecipeCard {...recipe} />
+        <RecipeCard {...recipe} key={recipe.uri} />
       ))}
     </Pane>
   );
